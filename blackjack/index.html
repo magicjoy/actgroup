@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
+        <title>BlackJack</title>
+        <link rel="stylesheet"
+            href="./style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <div id="bet">
+            <p>베팅 금액을 입력하세요.</p>
+            <div id="input"></div>
+            <button id="up" onclick="up()">▲</button>
+            <button id="down" onclick="down()">▼</button>
+            <button id="start" onclick="start()">시작</button>
+        </div>
+
+        <div id="dealer"></div>
+        <div id="player"></div>
+        
+        <div id="buttons">
+            <img> <!--카드 사진-->
+            <button id="hit" onclick="hit()">HIT</button>
+            <button id="stand" onclick="stand()">STAND</button>
+        </div>
+
+        <div id="betPrice"></div>
+        <div id="currentPoint">
+            <p></p>
+            <p></p>
+        </div>
+
+        <div id="selectPoint"></div>
+    </body>
+
+    <script src="./script.js"></script>
+
+</html>

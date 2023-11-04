@@ -1,0 +1,24 @@
+* {border: 0; margin: 0; padding: 0; text-align: center; overflow: hidden; user-select: none;}
+
+#bet {width: 100vw; height: 100vh; background: #fff;}
+#bet > p {font-size: 50px; font-weight: bold; padding: 50px 0;}
+#input {width: 200px; height: 50px; border: 3px solid #000; border-radius: 10px; position: absolute; left: calc(50vw - 100px); font-size: 30px; font-weight: bold; display: flex; justify-content: center; align-items: center;}
+#up {width: 50px; height: 30px; border: 3px solid #000; border-radius: 100px; background: #fff; margin: 100px 5px 0 0;}
+#down {width: 50px; height: 30px; border: 3px solid #000; border-radius: 100px; background: #fff; margin: 100px 5px 0 5px; pointer-events: none;}
+#start {width: 50px; height: 30px; border: 3px solid #000; border-radius: 100px; background: #fff; margin: 100px 0 0 40px;}
+
+#player, #dealer {width: 100vw; height: 40vh; display: flex; align-items: center; justify-content: center;}
+#player > div, #dealer > div {width: 80px; height: 120px; padding: 0 10px;}
+#player > div > p, #dealer > div > p {display: none;}
+#player > div > img, #dealer > div > img {width: 80px;}
+
+#buttons {width: 100vw; display: flex; justify-content: center;}
+
+#hit, #stand {border: 3px solid #000; border-radius: 100px; background: #fff; padding: 5px 15px; margin: 0 20px; font-size: 20px; font-weight: bold; display: none;}
+
+#betPrice {position: fixed; left: 50px; top: 50px; font-size: 24px; display: none; padding: 15px; border: 3px solid #000; border-radius: 10px; font-weight: bold;}
+
+#currentPoint {position: fixed; left: 50px; bottom: 50px; font-size: 24px; display: none; padding: 15px; border: 3px solid #000; border-radius: 10px; font-weight: bold;}
+
+#selectPoint {width: 40vw; height: 30vh; background: #fff; position: fixed; top: 35vh; left: 30vw; display: none; align-items: center; justify-content: center;}
+#selectPoint > button {width: 50px; height: 20vh; background: none; border: 2px solid #000; margin: 0 10px;}

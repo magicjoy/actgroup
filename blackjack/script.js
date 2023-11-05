@@ -183,8 +183,7 @@ function dealer_action() {
     if (total[1]>21) {
         clearTimeout(timer)
         setTimeout(function(){game_result(1)},1500)
-        game_result(1)
-    } else if (total[0] <= total[0]) {
+    } else if (total[0] <= total[1]) {
         clearTimeout(timer)
         setTimeout(function(){game_result(0)},1500)
     } else {

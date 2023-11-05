@@ -146,32 +146,43 @@ function stand() {
             $("#selectPoint").append("<button id='"+ i + "' onclick='selectPoint(this.id)'>" + A_case[total[2]][i] + "점</button>");
         }
     } else {
-        dealer_action()
+        setTimeout(function(){dealer_action()},1500)
     }
 }
 
 function selectPoint(value){
-    // $("#selectPoint").css("display", "none")
+    $("#selectPoint").css("display", "none")
     p_deck.push('h'+A_case[total[2]][value]);
     p_deck = p_deck.filter((element) => element != 'hA'&&element != 'sA'&&element != 'dA' && element != 'cA');
     sum_total(p_deck,0);
     $("#currentPoint > p:nth-of-type(1)").empty()
     $("#currentPoint > p:nth-of-type(1)").append(total[0])
-    dealer_action()
+    setTimeout(function(){dealer_action()},1500)
 }
 
 function dealer_action() {
     sum_total(d_deck,1)
-    while (total[1]<16) {
+    if (total[1]<16) {
         d_deck.push(deck[0]);
-        $("#dealer").append("<div>" + deck[0] + "</div>");
+        $("#dealer").append("<div><p>" + deck[0] + "</p><img src='./files/" + deck[0] + ".svg'></div>");
         if (deck[0].endsWith('A')) {
             total[3] += 1
         }
-        sum_total(d_deck,1)
         deck.shift()
+        var timer = setTimeout(function(){dealer_action()},1500)
     }
     console.log(total)
+    if (total[1]>21) {
+        clearTimeout(timer)
+        setTimeout(function(){game_result(1)},1500)
+        game_result(1)
+    } else if (total[0] <= total[0]) {
+        clearTimeout(timer)
+        setTimeout(function(){game_result(0)},1500)
+    } else {
+        clearTimeout(timer)
+        setTimeout(function(){game_result(1)},1500)
+    }
 }
 
 function reset() {
@@ -187,13 +198,26 @@ function reset() {
     }
     
     shuffle(deck)
+
+    $('#dealer').empty()
+    $('#player').empty()
 }
 
 function game_result(status) {
+    reset()
     if (status == 0) {
         // 플레이어 패배
+        $("#result").text('딜러 승리');
         console.log('딜러 승리')
     } else if (status == 1) {
+        $("#result").text('플레이어 승리');
         console.log('플레이어 승리')
     }
+    $("#over_page").css("display", "block");
+    $("#result").css("display", "block");
+
+    $("#betPrice").css("display", "none");
+    $("#currentPoint").css("display", "none");
+    $("#hit").css("display", "none");
+    $("#stand").css("display", "none");
 }

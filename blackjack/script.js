@@ -91,6 +91,7 @@ function start() {
     $("#currentPoint").css("display", "block");
     $("#hit").css("display", "block");
     $("#stand").css("display", "block");
+    $('#dealerPoint').css('display', 'block');
 
     // 플레이어에게 deck의 카드 지급(iArray[0]~iArray[25]: 플레이어 카드)
     for (x = 0; x < 2; x++) {
@@ -116,6 +117,9 @@ function start() {
         }
         deck.shift();
     }
+    sum_total(d_deck,1)
+    $("#dealerPoint > p").empty()
+    $("#dealerPoint > p").append(total[1])
 }
 
 // hit 버튼 누를 시
@@ -134,7 +138,7 @@ function hit() {
     $("#currentPoint > p:nth-of-type(2)").empty()
     $("#currentPoint > p:nth-of-type(2)").append("A " + total[2] + "개")
     //21 넘을 시 게임 종료
-    if (total[0] > 21) {
+    if (total[0]+total[2] > 21) {
         game_result(0)
     }
 }
@@ -146,6 +150,7 @@ function stand() {
             $("#selectPoint").append("<button id='"+ i + "' onclick='selectPoint(this.id)'>" + A_case[total[2]][i] + "점</button>");
         }
     } else {
+        sum_total(d_deck, 1)
         setTimeout(function(){dealer_action()},1500)
     }
 }
@@ -157,11 +162,11 @@ function selectPoint(value){
     sum_total(p_deck,0);
     $("#currentPoint > p:nth-of-type(1)").empty()
     $("#currentPoint > p:nth-of-type(1)").append(total[0])
+    sum_total(d_deck, 1)
     setTimeout(function(){dealer_action()},1500)
 }
 
 function dealer_action() {
-    sum_total(d_deck,1)
     if (total[1]<16) {
         d_deck.push(deck[0]);
         $("#dealer").append("<div><p>" + deck[0] + "</p><img src='./files/" + deck[0] + ".svg'></div>");
@@ -169,6 +174,9 @@ function dealer_action() {
             total[3] += 1
         }
         deck.shift()
+        sum_total(d_deck,1)
+        $("#dealerPoint > p:nth-of-type(1)").empty()
+        $("#dealerPoint > p:nth-of-type(1)").append(total[1])
         var timer = setTimeout(function(){dealer_action()},1500)
     }
     console.log(total)
@@ -218,6 +226,7 @@ function game_result(status) {
 
     $("#betPrice").css("display", "none");
     $("#currentPoint").css("display", "none");
+    $("#dealerPoint").css("display", "none");
     $("#hit").css("display", "none");
     $("#stand").css("display", "none");
 }

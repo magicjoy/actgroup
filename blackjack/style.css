@@ -1,29 +1,37 @@
-* {border: 0; margin: 0; padding: 0; text-align: center; overflow: hidden; user-select: none;}
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
 
-#bet {width: 100vw; height: 100vh; background: #fff;}
-#bet > p {font-size: 50px; font-weight: bold; padding: 50px 0;}
-#input {width: 200px; height: 50px; border: 3px solid #000; border-radius: 10px; position: absolute; left: calc(50vw - 100px); font-size: 30px; font-weight: bold; display: flex; justify-content: center; align-items: center;}
-#up {width: 50px; height: 30px; border: 3px solid #000; border-radius: 100px; background: #fff; margin: 100px 5px 0 0;}
-#down {width: 50px; height: 30px; border: 3px solid #000; border-radius: 100px; background: #fff; margin: 100px 5px 0 5px; pointer-events: none;}
-#start {width: 50px; height: 30px; border: 3px solid #000; border-radius: 100px; background: #fff; margin: 100px 0 0 40px;}
+* {border: 0; margin: 0; padding: 0; text-align: center; overflow: hidden; user-select: none; color: white;}
 
-#player, #dealer {width: 100vw; height: 40vh; display: flex; align-items: center; justify-content: center;}
+#bet {width: 100vw; height: 100vh; background: #00472f; position: fixed; top: 0; left: 0;}
+#bet > p:nth-of-type(1) {width: 30vw; font-family: "Dancing Script"; font-size: 80px; font-weight: bold; padding: 30px 0; border-bottom: 10px double white; position: fixed; top: 0; left: 35vw; -webkit-text-stroke: 1px;}
+#input {width: 25vw; padding-bottom: 15px; border-bottom: 5px solid white; position: fixed; top: 40vh; left: 10vw; font-size: 42px; font-weight: bold; display: flex; justify-content: center; align-items: center;}
+#up {width: 10vw; border: 3px solid white; padding: 10px 0; border-radius: 100px; background: #00472f; position: fixed; top: 55vh; left: 10vw;}
+#down {width: 10vw; border: 3px solid white; padding: 10px 0; border-radius: 100px; background: #00472f; position: fixed; top: 55vh; left: 25vw; pointer-events: none;}
+#start {width: 20vw; height: 20vh; border-radius: 100px; font-size: 60px; font-family: "Dancing Script"; color: white; background: #00472f; border: 5px solid #fff; position: fixed; top: 40vh; right: 10vw; -webkit-text-stroke: 1.5px;}
+
+#player, #dealer {width: 100vw; height: 50vh; background: #00472f; display: flex; align-items: center; justify-content: center;}
 #player > div, #dealer > div {width: 80px; height: 120px; padding: 0 10px;}
 #player > div > p, #dealer > div > p {display: none;}
 #player > div > img, #dealer > div > img {width: 80px;}
 
-#buttons {width: 100vw; display: flex; justify-content: center;}
+#dealer > div:nth-of-type(2) > img:nth-of-type(1) {position: relative;}
+#dealer > div:nth-of-type(2) > img:nth-of-type(2) {position: absolute; margin-left: -80px;}
 
-#hit, #stand {border: 3px solid #000; border-radius: 100px; background: #fff; padding: 5px 15px; margin: 0 20px; font-size: 20px; font-weight: bold; display: none;}
+#buttons {width: 20vw; height: 30vh; position: fixed; top: 35vh; right: 10vw; display: flex; flex-direction: column; align-items: center; display: none;}
+#hit, #stand {width: 150px; height: 60px; margin: calc(7.5vh - 30px) 0; border: 3px solid white; border-radius: 100px; background: #00472f; padding: 5px 15px; font-size: 20px; font-weight: bold; display: none;}
 
-#betPrice {position: fixed; left: 50px; top: 50px; font-size: 24px; display: none; padding: 15px; border: 3px solid #000; border-radius: 10px; font-weight: bold;}
+#betPrice {position: fixed; left: 50px; top: 50px; font-size: 24px; display: none; padding: 15px; border: 3px solid white; border-radius: 10px; font-weight: bold;}
 
-#currentPoint {position: fixed; left: 50px; bottom: 50px; font-size: 24px; display: none; padding: 15px; border: 3px solid #000; border-radius: 10px; font-weight: bold;}
+#playerPoint {position: fixed; left: 50px; bottom: 50px; font-size: 24px; display: none; padding: 15px; border: 3px solid white; border-radius: 10px; font-weight: bold;}
 
-#dealerPoint {position: fixed; left: 150px; top: 140px; font-size: 24px; display: none; padding: 15px; border: 3px solid #000; border-radius: 10px; font-weight: bold;}
+#dealerPoint {position: fixed; left: 150px; top: 140px; font-size: 24px; display: none; padding: 15px; border: 3px solid white; border-radius: 10px; font-weight: bold;}
 
-#selectPoint {width: 40vw; height: 30vh; background: #fff; position: fixed; top: 35vh; left: 30vw; display: none; align-items: center; justify-content: center;}
-#selectPoint > button {width: 50px; height: 20vh; background: none; border: 2px solid #000; margin: 0 10px;}
+#selectPoint {width: 100vw; height: 30vh; background: #00472f; position: fixed; top: 35vh; left: 0; display: none; align-items: center; justify-content: center; flex-direction: column; z-index: 100; font-weight: bold; font-size: 24px;}
+#selectPoint > div {padding-top: 30px;}
+#selectPoint > div > button {width: 100px; height: 50px; background: none; border: 3px solid white; margin: 0 10px; border-radius: 50px; font-weight: bold; font-size: 18px;}
 
-#over_page {width: 100vw; height: 100vh; background: #fff; display: 'none'}
-#result {left: 55px; top: 55px; font-size: 24px; display: none; padding: 15px; border: 3px solid #000; border-radius: 10px; font-weight: bold;}
+#result {width: 100vw; height: 30vh; position: fixed; background: #00472fee; top: 35vh; left: 0; font-size: 24px; display: none; font-weight: bold; justify-content: center; flex-direction: column;}
+#result > p:nth-of-type(1) {font-size: 32px;}
+#result > p:nth-of-type(2) {margin-top: 30px; line-height: 1.6;}
+#result > p:nth-of-type(3) {height: 100vh; position: fixed; display: flex; justify-content: center; align-items: center; left: 25vw; font-size: 36px;}
+#result > button {width: 20vw; padding: 10px; font-size: 24px; font-weight: bold; border-radius: 10vw; background: #00472f; border: 3px solid #fff; position: fixed; right: 10vw;}

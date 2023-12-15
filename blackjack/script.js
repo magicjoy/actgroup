@@ -154,6 +154,7 @@ function hit() {
     $("#playerPoint > p").append(total[0] + "점 + A " + total[2] + "개")
     //21 넘을 시 게임 종료
     if (total[0]+total[2] > 21) {
+        total[0] = total[0]+total[2]
         game_result(0)
         return//warn
     }
@@ -215,7 +216,7 @@ function dealer_action() {
                 setTimeout(function(){game_result(2)},1400)
             } else if(blackjack[0]+blackjack[1] == 2) {
                 clearTimeout(timer)
-                setTimeout(function(){game_result(-1)},1400)
+                setTimeout(function(){game_result(4)},1400)
             } else if (total[1]>21) {
                 clearTimeout(timer)
                 setTimeout(function(){game_result(1)},1400) 
@@ -259,8 +260,10 @@ function game_result(status) {
     } else if(status>1) {
         if (status == 2) {
             $("#result").html("<p>딜러 승리</p><p>딜러: blackjack</p><button onclick='reset()'>다시 시작하기</button>")
-        } else {
+        } else if(status==3) {
             $("#result").html("<p>플레이어 승리</p><p>플레이어: blackjack</p><button onclick='reset()'>다시 시작하기</button>")
+        } else{
+            $("#result").html("<p>무승부</p><p>플레이어: blackjack<br>딜러: blackjack</p><button onclick='reset()'>다시 시작하기</button>")
         }
     } else {
         $("#result").html("<p>무승부</p><p>플레이어: " + total[0] + "점<br>딜러: " + total[1] + "점</p><button onclick='reset()'>다시 시작하기</button>")

@@ -77,6 +77,8 @@ function sum_total(a,types) {
         if(types == 0) {
             $("#playerPoint > p").empty()
             $("#playerPoint > p").append("blackjack")
+            $("#hit").css({"pointer-events": "none", "opacity": ".8"})
+            $("#stand").css({"pointer-events": "none", "opacity": ".8"})
             setTimeout(function(){dealer_action()},1500)
             return
         }
@@ -160,6 +162,8 @@ function hit() {
 
 function stand() {
     $("#dealerPoint").css("display", "block")
+    $("#hit").css({"pointer-events": "none", "opacity": ".8"})
+    $("#stand").css({"pointer-events": "none", "opacity": ".8"})
     if (total[0]+total[2] > 21) {
         game_result(0)
         return//warn

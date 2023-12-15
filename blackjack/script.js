@@ -214,13 +214,16 @@ function dealer_action() {
             } else if (blackjack[0]<blackjack[1]) {
                 clearTimeout(timer)
                 setTimeout(function(){game_result(2)},1400)
+            } else if(blackjack[0]+blackjack[1] == 2) {
+                clearTimeout(timer)
+                setTimeout(function(){game_result(-1)},1400)
             } else if (total[1]>21) {
                 clearTimeout(timer)
                 setTimeout(function(){game_result(1)},1400) 
             } else if (total[0] < total[1]) {
                 clearTimeout(timer)
                 setTimeout(function(){game_result(0)},1400)
-            } else if(total[0]==total[1] || blackjack == [1,1]) {
+            } else if(total[0]==total[1]) {
                 clearTimeout(timer)
                 setTimeout(function(){game_result(-1)},1400)
             } else {

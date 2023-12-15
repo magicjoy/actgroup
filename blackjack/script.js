@@ -131,10 +131,9 @@ function start() {
         }
         deck.shift()
     }
-    sum_total(d_deck,1)
-
     $("#dealer > div:nth-of-type(2)").append("<img src='./files/back.svg'>")
-
+    sum_total(d_deck,1)
+    
     $("#playerPoint > p").empty()
     $("#playerPoint > p").append(total[0] + "점 + A " + total[2] + "개")
 

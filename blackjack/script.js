@@ -124,16 +124,16 @@ function start() {
     // 딜러에게 deck의 카드 지급
     for (y = 0; y < 2; y++) {
         $("#bet").css("display", "none")
+        $("#dealer").append("<div><p>" + deck[0] + "</p><img src='./files/" + deck[0] + ".svg'></div>")
         d_deck.push(deck[0])
         if (deck[0].endsWith('A')) {
             total[3] += 1
         }
         deck.shift()
-        $("#dealer").append("<div><p>" + deck[0] + "</p><img src='./files/" + deck[0] + ".svg'></div>")
     }
     $("#dealer > div:nth-of-type(2)").append("<img src='./files/back.svg'>")
     sum_total(d_deck,1)
-    
+
     $("#playerPoint > p").empty()
     $("#playerPoint > p").append(total[0] + "점 + A " + total[2] + "개")
 
@@ -154,7 +154,6 @@ function hit() {
     $("#playerPoint > p").append(total[0] + "점 + A " + total[2] + "개")
     //21 넘을 시 게임 종료
     if (total[0]+total[2] > 21) {
-        total[0] = total[0]+total[2]
         game_result(0)
         return//warn
     }
@@ -216,7 +215,7 @@ function dealer_action() {
                 setTimeout(function(){game_result(2)},1400)
             } else if(blackjack[0]+blackjack[1] == 2) {
                 clearTimeout(timer)
-                setTimeout(function(){game_result(4)},1400)
+                setTimeout(function(){game_result(-1)},1400)
             } else if (total[1]>21) {
                 clearTimeout(timer)
                 setTimeout(function(){game_result(1)},1400) 
@@ -260,10 +259,8 @@ function game_result(status) {
     } else if(status>1) {
         if (status == 2) {
             $("#result").html("<p>딜러 승리</p><p>딜러: blackjack</p><button onclick='reset()'>다시 시작하기</button>")
-        } else if(status==3) {
+        } else {
             $("#result").html("<p>플레이어 승리</p><p>플레이어: blackjack</p><button onclick='reset()'>다시 시작하기</button>")
-        } else{
-            $("#result").html("<p>무승부</p><p>플레이어: blackjack<br>딜러: blackjack</p><button onclick='reset()'>다시 시작하기</button>")
         }
     } else {
         $("#result").html("<p>무승부</p><p>플레이어: " + total[0] + "점<br>딜러: " + total[1] + "점</p><button onclick='reset()'>다시 시작하기</button>")

@@ -129,11 +129,9 @@ function start() {
             total[3] += 1
         }
         deck.shift()
-        if (y==1) {
-            $("#dealer > div:nth-of-type(2)").append("<img src='./files/back.svg'>")
-        }
         $("#dealer").append("<div><p>" + deck[0] + "</p><img src='./files/" + deck[0] + ".svg'></div>")
     }
+    $("#dealer > div:nth-of-type(2)").append("<img src='./files/back.svg'>")
     sum_total(d_deck,1)
     
     $("#playerPoint > p").empty()

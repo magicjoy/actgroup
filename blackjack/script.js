@@ -124,14 +124,16 @@ function start() {
     // 딜러에게 deck의 카드 지급
     for (y = 0; y < 2; y++) {
         $("#bet").css("display", "none")
-        $("#dealer").append("<div><p>" + deck[0] + "</p><img src='./files/" + deck[0] + ".svg'></div>")
         d_deck.push(deck[0])
         if (deck[0].endsWith('A')) {
             total[3] += 1
         }
         deck.shift()
+        if (y==1) {
+            $("#dealer > div:nth-of-type(2)").append("<img src='./files/back.svg'>")
+        }
+        $("#dealer").append("<div><p>" + deck[0] + "</p><img src='./files/" + deck[0] + ".svg'></div>")
     }
-    $("#dealer > div:nth-of-type(2)").append("<img src='./files/back.svg'>")
     sum_total(d_deck,1)
     
     $("#playerPoint > p").empty()

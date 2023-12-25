@@ -9,13 +9,16 @@
 #down {width: 10vw; border: 3px solid white; padding: 10px 0; border-radius: 100px; background: #00472f; position: fixed; top: 55vh; left: 25vw; pointer-events: none;}
 #start {width: 20vw; height: 20vh; border-radius: 100px; font-size: 60px; font-family: "Dancing Script"; color: white; background: #00472f; border: 5px solid #fff; position: fixed; top: 40vh; right: 10vw; -webkit-text-stroke: 1.5px;}
 
-#player, #dealer {width: 100vw; height: 50vh; background: #00472f; display: flex; align-items: center; justify-content: center;}
+#player, #dealer {height: 50vh; background: #00472f; display: flex; align-items: center;}
 #player > div, #dealer > div {width: 80px; height: 120px; padding: 0 10px;}
+#player > div:nth-of-type(1), #dealer > div:nth-of-type(1) {margin-left: calc(50vw - 40px);}
 #player > div > p, #dealer > div > p {display: none;}
-#player > div > img, #dealer > div > img {width: 80px;}
+#player > div > img, #dealer > div > img {width: 80px; height: 120px; z-index: 20;}
+#player > div > img:nth-of-type(1), #dealer > div > img:nth-of-type(1) {opacity: 0;}
+#player > div > img:nth-of-type(2), #dealer > div > img:nth-of-type(2) {position: fixed; top: calc(50vh - 80px); left: 80px;}
 
-#dealer > div:nth-of-type(2) > img:nth-of-type(1) {position: relative;}
-#dealer > div:nth-of-type(2) > img:nth-of-type(2) {position: absolute; margin-left: -80px;}
+#deck {width: 80px; height: 120px; position: fixed; top: calc(50vh - 80px); left: 80px; display: none;}
+#deck > img {width: 80px; height: 120px; z-index: 10;}
 
 #buttons {width: 20vw; height: 30vh; position: fixed; top: 35vh; right: 10vw; display: flex; flex-direction: column; align-items: center; display: none;}
 #hit, #stand {width: 150px; height: 60px; margin: calc(7.5vh - 30px) 0; border: 3px solid white; border-radius: 100px; background: #00472f; padding: 5px 15px; font-size: 20px; font-weight: bold; display: none;}

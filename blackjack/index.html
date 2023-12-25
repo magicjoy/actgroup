@@ -22,18 +22,19 @@
 
         <div id="dealer"></div>
         <div id="player"></div>
+        <div id="deck"><img src="./files/back.png"></div>
         
         <div id="buttons">
-            <img> <!--카드 사진-->
-            <button id="hit" onclick="hit()">HIT</button>
-            <button id="stand" onclick="stand()">STAND</button>
+            <img>
+            <button id="hit" onclick="hit()" disabled="disabled">HIT</button>
+            <button id="stand" onclick="stand()" disabled="disabled">STAND</button>
         </div>
         <div id="betPrice"></div>
         <div id="dealerPoint">
-            <p></p>
+            <p>딜러 점수...</p>
         </div>
         <div id="playerPoint">
-            <p></p>
+            <p>플레이어 점수...</p>
         </div>
 
         <div id="selectPoint">A 점수 선택
